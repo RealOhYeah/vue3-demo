@@ -1,39 +1,36 @@
-  
-  <!-- setup函数实现 -->
-  <!-- <script>
-  export default{
-      setup() {
-        console.log('setup函数',this);
+<!-- <script setup>
 
-        const message = 'hello Vue3'
-        const logMessage = () => {
-          console.log(message);
-        }
-        return{
-          message,
-          logMessage
-        }
+import { reactive } from 'vue'
 
-      },
+const state = reactive({ 
+  count: 100
+ });
 
-      beforeCreate() {
-        console.log('beforeCreate函数');
-      }
-    }
-  </script> -->
-<!-- 语法糖实现 -->
-  <script setup>
-  const message = 'this is a message'
-  const logMessage = () => {
-    console.log(message);
-  }
+const setCount = () => {
+  state.count++;
+}
 
 </script>
 
+<template>
+  <div>
+    <div>{{ state.count }}</div>
+    <button @click="setCount">+1</button>
+  </div>
+</template>
+ -->
+ <script setup>
+ // 导入
+ import { ref } from 'vue'
+ // 执行函数 传入参数 变量接收
+ const count = ref(1)
+ const setCount = ()=>{
+   // 修改数据更新视图必须加上.value
+   count.value*=10
+ }
+</script>
 
-  <template>
-    <div> {{ message }} </div>
-    <button @click="logMessage">按钮</button>
-
-  </template>
-
+<template>
+  <div>{{count}}</div>
+  <button @click="setCount">{{count}}</button>
+</template>
