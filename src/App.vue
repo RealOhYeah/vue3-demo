@@ -1,37 +1,24 @@
-<script setup>
-import TestCom from '@/components/test-com.vue' 
- 
-import { ref,onMounted } from 'vue'
-   
-const inp = ref(null); 
-console.log(inp);
-console.log(inp.value);
- 
-onMounted(() => {
-  console.log(inp.value);
-  inp.value.focus()
-});
+<script setup> 
+import Son1Com from '@/components/Son1Com.vue'
+import Son2Com from '@/components/Son2Com.vue'
+import { useCounterStore } from '@/store/counter.js'  
+const counterStore = useCounterStore()
 
-const clickFn = () => {
-  inp.value.focus()
-}
-
-const testRef = ref(null)
-const getCom = () => {
-  console.log(testRef);
-
-  console.log(testRef.value.count);
-  console.log(testRef.value.sayHi);
-
-}
+console.log(counterStore);
 
 </script>
 
 <template>
-  <div>
-    <input ref="inp"  type="text">
-    <button @click="clickFn" >点击让输入框聚焦</button>
-  </div>
-  <TestCom ref="testRef" ></TestCom>
-  <button @click="getCom">获取组件</button>
+    <h3>App.vue 根组件 - 0
+     -  {{ counterStore.count }}
+     -  {{ counterStore.msg }}
+
+    </h3>
+    <Son1Com></Son1Com>
+    <Son2Com></Son2Com>
+  
 </template>
+
+<style scoped>
+
+</style>
