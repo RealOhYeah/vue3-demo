@@ -1,47 +1,39 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  
+  <!-- setup函数实现 -->
+  <!-- <script>
+  export default{
+      setup() {
+        console.log('setup函数',this);
+
+        const message = 'hello Vue3'
+        const logMessage = () => {
+          console.log(message);
+        }
+        return{
+          message,
+          logMessage
+        }
+
+      },
+
+      beforeCreate() {
+        console.log('beforeCreate函数');
+      }
+    }
+  </script> -->
+<!-- 语法糖实现 -->
+  <script setup>
+  const message = 'this is a message'
+  const logMessage = () => {
+    console.log(message);
+  }
+
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <template>
+    <div> {{ message }} </div>
+    <button @click="logMessage">按钮</button>
 
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+  </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
